@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import data from "../data.json";
 import MovieCard from "./MovieCard";
+import { Link } from "react-router-dom"
 
 export default function MovieList({ title, unfiltered, rating }) {
   return (
@@ -9,13 +10,13 @@ export default function MovieList({ title, unfiltered, rating }) {
       {unfiltered &&
         data.movies.map((movie) => {
           return (
-            <MovieCard
+            <Link to={`/movies/${movie.id}`} key={movie.id}><MovieCard
               key={movie.id}
               image={movie.posterURL}
               title={movie.title}
               description={movie.description}
               rating={movie.rating}
-            />
+            /></Link>
           );
         })}
 
@@ -48,7 +49,6 @@ export default function MovieList({ title, unfiltered, rating }) {
             );
           }
         })}
-
 
     </div>
   );
